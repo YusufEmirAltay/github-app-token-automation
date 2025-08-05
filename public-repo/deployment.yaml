@@ -1,0 +1,21 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.1
+      - name: Clone the private repo
+        run: |
+          git clone https://x-access-token:${{ secrets.PYTHON_TOKEN }}@github.com/app-deneme-org/${{ secrets.REPO_NAME }}.git
+      - name: List contents of private repo
+        run: |
+          ls -la private-repo
+          cat private-repo/test.txt
+
