@@ -125,11 +125,11 @@ Evet, her iki repository de private olsa bile bu işlem çalışır — ama şu 
 ### Gerekenler:
 
 1. Bu workflow’un çalıştığı repository (yani "kaynak" repo):
- - Bu repo GitHub Actions çalıştırmak için kendi içinde tanımlı bir `PYTHON_TOKEN (ACCESS TOKEN)` secret’ına sahip olmalı.
- - Bu token, private hedef repoya erişim yetkisi olan bir GitHub App üzerinden alınmış olmalı.
+- Bu repo GitHub Actions çalıştırmak için kendi içinde tanımlı bir `PYTHON_TOKEN (ACCESS TOKEN)` secret’ına sahip olmalı.
+- Bu token, private hedef repoya erişim yetkisi olan bir GitHub App üzerinden alınmış olmalı.
 
 2. Klonlanan hedef repo (diğer private repo):
- - `PYTHON_TOKEN (ACCESS TOKEN)`’ın ait olduğu GitHub App veya kullanıcı, bu hedef repoya erişim iznine (read veya write) sahip olmalı.
+- `PYTHON_TOKEN (ACCESS TOKEN)`’ın ait olduğu GitHub App veya kullanıcı, bu hedef repoya erişim iznine (read veya write) sahip olmalı.
 
 ## Neden Sorunsuz Çalışır?
 
