@@ -24,7 +24,7 @@ Bu doküman, GitHub Actions içerisinde özel (private) bir repodan public bir r
 
 ---
 
-## 1. GitHub App Oluşturma
+## GitHub App Oluşturma
 
 1. GitHub üzerinde **GitHub Apps** sayfasına git.
 2. Yeni bir GitHub App oluştur:
@@ -51,7 +51,7 @@ Bu doküman, GitHub Actions içerisinde özel (private) bir repodan public bir r
 
 ---
 
-## 2. `app.py` - Token Üretici Script
+## `app.py` - Token Üretici Script
 
 ### Neden `app.py` adında bir Python dosyası yazdık?
 
@@ -96,7 +96,7 @@ Evet, çünkü:
 
 ---
 
-## 3. `x-access-token` Kullanımı
+## `x-access-token` Kullanımı
 
 ### Neden `x-access-token` Yazıyoruz?
 
@@ -111,10 +111,35 @@ GitHub App access token ile yapılan işlemlerde, **kullanıcı adı** kısmı s
 ### Örnek Kullanım
 
 ```bash
-git clone https://x-access-token:<ACCESS_TOKEN>@github.com/app-deneme-org/private-repo.git
+git clone https://x-access-token:<ACCESS_TOKEN>@github.com/<ORG_NAME>/<REPO_NAME>.git
 ```
 
 > Bu kullanım, GitHub’ın resmi dokümantasyonunda yer almaktadır.
+
+---
+
+## Hem Kaynak Hem Hedef Repo Private Olsa Çalışır mı?
+
+Evet, her iki repository de private olsa bile bu işlem çalışır — ama şu koşullar sağlandığı sürece:
+
+### Gerekenler:
+
+1. Bu workflow’un çalıştığı repository (yani "kaynak" repo):
+   Bu repo GitHub Actions çalıştırmak için kendi içinde tanımlı bir `PYTHON_TOKEN (ACCESS TOKEN)` secret’ına sahip olmalı.
+   Bu token, private hedef repoya erişim yetkisi olan bir GitHub App üzerinden alınmış olmalı.
+
+2. Klonlanan hedef repo (diğer private repo):
+   `PYTHON_TOKEN (ACCESS TOKEN)`’ın ait olduğu GitHub App veya kullanıcı, bu hedef repoya erişim iznine (read veya write) sahip olmalı.
+
+## Neden Sorunsuz Çalışır?
+
+Çünkü şu satırda:
+
+```bash
+git clone https://x-access-token:<ACCESS_TOKEN>@github.com/<ORG_NAME>/<REPO_NAME>.git
+```
+
+GitHub’a kimlik doğrulaması yapılmış oluyor. Git, o token’ı kullanarak hedef repoya erişim sağlıyor. Bu erişim yetkili bir token üzerinden yapıldığı için, **reponun public veya private olması** fark etmiyor.
 
 ---
 
