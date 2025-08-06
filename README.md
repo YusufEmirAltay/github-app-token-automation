@@ -1,12 +1,12 @@
 # GitHub App ile Otomatik Token Oluşturma ve Actions Secrets Güncelleme Dokümantasyonu
 
-Bu doküman, GitHub Actions içerisinde özel (private) bir repodan public bir repoya veri çekmek için gerekli olan access token'ın, **GitHub App** kullanarak nasıl kullanıcı bazında değil **organizasyon bazında** alınacağını ve otomatik olarak public bir reponun **secrets** alanına nasıl yazılacağını adım adım açıklamaktadır.
+Bu doküman, GitHub Actions içerisinde private bir repodan public (veya private) bir repoya veri çekmek için gerekli olan access token'ın, **GitHub App** kullanarak nasıl kullanıcı bazında değil **organizasyon bazında** alınacağını ve otomatik olarak public bir reponun **secrets** alanına nasıl yazılacağını adım adım açıklamaktadır.
 
 ---
 
 ## Amaç
 
-- Private bir GitHub reposuna, public bir repo içindeki GitHub Actions workflow'u ile erişim sağlamak.  
+- Private bir GitHub reposuna, public (veya private) bir repo içindeki GitHub Actions workflow'u ile erişim sağlamak.  
 - GitHub App kullanarak access token almak ve bu token'ı belirli aralıklarla otomatik olarak yenilemek.  
   _(Alınan tokenlar 1 saat süreyle geçerli olduğu için ben 55 dakikada bir otomatik yenileme yaptım.)_  
 - Access token'ı public reponun secrets alanına otomatik olarak yazmak.
@@ -125,11 +125,11 @@ Evet, her iki repository de private olsa bile bu işlem çalışır — ama şu 
 ### Gerekenler:
 
 1. Bu workflow’un çalıştığı repository (yani "kaynak" repo):
-   Bu repo GitHub Actions çalıştırmak için kendi içinde tanımlı bir `PYTHON_TOKEN (ACCESS TOKEN)` secret’ına sahip olmalı.
-   Bu token, private hedef repoya erişim yetkisi olan bir GitHub App üzerinden alınmış olmalı.
+   - Bu repo GitHub Actions çalıştırmak için kendi içinde tanımlı bir `PYTHON_TOKEN (ACCESS TOKEN)` secret’ına sahip olmalı.
+   - Bu token, private hedef repoya erişim yetkisi olan bir GitHub App üzerinden alınmış olmalı.
 
 2. Klonlanan hedef repo (diğer private repo):
-   `PYTHON_TOKEN (ACCESS TOKEN)`’ın ait olduğu GitHub App veya kullanıcı, bu hedef repoya erişim iznine (read veya write) sahip olmalı.
+   - `PYTHON_TOKEN (ACCESS TOKEN)`’ın ait olduğu GitHub App veya kullanıcı, bu hedef repoya erişim iznine (read veya write) sahip olmalı.
 
 ## Neden Sorunsuz Çalışır?
 
