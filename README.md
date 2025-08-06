@@ -1,6 +1,6 @@
 # GitHub App ile Otomatik Token Oluşturma ve Actions Secrets Güncelleme Dokümantasyonu
 
-Bu doküman, GitHub Actions içerisinde private bir repodan public (veya private) bir repoya veri çekmek için gerekli olan access token'ın, **GitHub App** kullanarak nasıl kullanıcı bazında değil **organizasyon bazında** alınacağını ve otomatik olarak public bir reponun **secrets** alanına nasıl yazılacağını adım adım açıklamaktadır.
+Bu doküman, GitHub Actions içerisinde private bir repodan public (veya private) bir repoya veri çekmek için gerekli olan access token'ın, **GitHub App** kullanarak nasıl kullanıcı bazında değil **organizasyon bazında** alınacağını ve otomatik olarak public (veya private) reponun **secrets** alanına nasıl yazılacağını adım adım açıklamaktadır.
 
 ---
 
